@@ -13,28 +13,34 @@ const db = admin.firestore();
 
 app.get('/comments', (req, res) => {
     db.collection("comments")
+        .orderBy('createdAt', 'desc')
         .get()
         .then((data) => {
             let comments = [];
             data.forEach((doc) => {
-                comments.push(doc.data());
+                comments.push({
+                    commentId: doc.id,
+                    body: doc.data().body,
+                    userHandle: doc.data().userHandle,
+                    createdAt: doc.data().createdAt
+                });
             });
             return res.json(comments);
         })
         .catch((err) => console.error(err));
 });
 
-exports.createComment = functions.https.onRequest((req, res) => {
+app.post('/newComment', (req, res) => {
     if (req.method !== "POST") {
         return res.status(400).json({
-            error: "Method not allowed"
+            error: "You not using post method"
         });
     }
 
     const newComment = {
         body: req.body.body,
         userHandle: req.body.userHandle,
-        createdAt: admin.firestore.Timestamp.fromDate(new Date())
+        createdAt: new Date().toISOString()
     };
 
     db.collection("comments")
@@ -52,4 +58,4 @@ exports.createComment = functions.https.onRequest((req, res) => {
         });
 });
 
-exports.api = functions.https.onRequest(app);
+exports.api = functions.region('us-central1').https.onRequest(app);
