@@ -1,9 +1,17 @@
 const functions = require("firebase-functions");
 const admin = require("firebase-admin");
-const serviceAccount = require("./service_account.json");
-const express = require('express');
+const firebase = require('firebase');
 
-const app = express();
+const app = require('express')();
+
+
+// private
+const serviceAccount = require("./service_account.json");
+
+// public
+
+
+
 
 admin.initializeApp({
     credential: admin.credential.cert(serviceAccount)
@@ -57,5 +65,32 @@ app.post('/newComment', (req, res) => {
             console.error(err);
         });
 });
+
+// signup
+app.post('/signup', (req, res) => {
+    newUser = {
+        email: req.body.email,
+        password: req.body.password,
+        confirmPassword: req.body.confirmPassword,
+        handle: req.body.handle
+    }
+
+    // data Validation
+
+    firebase.auth().createUserWithEmailAndPassword(
+        newUser.email, 
+        newUser.password
+    )
+    .then(data => {
+        return res.status(201).json({ message: `user ${data.user.uid} Sign up Succesfully :D `});
+    })
+    .catch(err => {
+        console.error(err);
+        res.status(500).json({ error: err.code });
+    })
+})
+
+
+
 
 exports.api = functions.region('us-central1').https.onRequest(app);
