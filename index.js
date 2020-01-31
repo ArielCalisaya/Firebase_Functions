@@ -1,17 +1,18 @@
-const functions = require("firebase-functions");
-const admin = require("firebase-admin");
+const functions = require('firebase-functions');
+const admin = require('firebase-admin');
 const firebase = require('firebase');
 
 const app = require('express')();
 
 
 // private
-const serviceAccount = require("./service_account.json");
+const serviceAccount = require('./service_account.json');
 
 // public
+const firebaseConfig = require('./firebaseConfig.json');
 
 
-
+firebase.initializeApp(firebaseConfig);
 
 admin.initializeApp({
     credential: admin.credential.cert(serviceAccount)
