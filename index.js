@@ -4,18 +4,18 @@ const firebase = require('firebase');
 
 const app = require('express')();
 
-
-// private
-const serviceAccount = require('./service_account.json');
-
-// public
-const firebaseConfig = require('./firebaseConfig.json');
+// Priority to run firebase
+const SERVICE_ACCOUNT = require('./service_account.json')
 
 
-firebase.initializeApp(firebaseConfig);
+// Config to store and manipulation to data cloud
+const FIREBASE_CONFIG = require('./firebaseConfig.json')
+
+
+firebase.initializeApp(FIREBASE_CONFIG);
 
 admin.initializeApp({
-    credential: admin.credential.cert(serviceAccount)
+    credential: admin.credential.cert(SERVICE_ACCOUNT)
 });
 
 const db = admin.firestore();

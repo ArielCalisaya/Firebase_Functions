@@ -1,0 +1,205 @@
+[debug] [2020-02-01T06:13:16.598Z] ----------------------------------------------------------------------
+[debug] [2020-02-01T06:13:16.602Z] Command:       C:\Program Files\nodejs\node.exe C:\Users\HP\AppData\Roaming\npm\node_modules\firebase-tools\lib\bin\firebase.js serve
+[debug] [2020-02-01T06:13:16.603Z] CLI Version:   7.12.1
+[debug] [2020-02-01T06:13:16.603Z] Platform:      win32
+[debug] [2020-02-01T06:13:16.603Z] Node Version:  v12.14.0
+[debug] [2020-02-01T06:13:16.605Z] Time:          Sat Feb 01 2020 03:13:16 GMT-0300 (GMT-03:00)
+[debug] [2020-02-01T06:13:16.605Z] ----------------------------------------------------------------------
+[debug] [2020-02-01T06:13:16.606Z] 
+[debug] [2020-02-01T06:13:16.625Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2020-02-01T06:13:16.627Z] > authorizing via signed-in user
+[debug] [2020-02-01T06:13:16.627Z] [iam] checking project social-media-d9c51 for permissions ["firebase.projects.get"]
+[debug] [2020-02-01T06:13:16.631Z] >>> HTTP REQUEST POST https://cloudresourcemanager.googleapis.com/v1/projects/social-media-d9c51:testIamPermissions  
+
+[debug] [2020-02-01T06:13:17.907Z] <<< HTTP RESPONSE 200
+[debug] [2020-02-01T06:13:17.911Z] >>> HTTP REQUEST GET https://firebase.googleapis.com/v1beta1/projects/social-media-d9c51  
+ 
+[debug] [2020-02-01T06:13:19.260Z] <<< HTTP RESPONSE 200
+[info] 
+[info] === Serving from 'C:\Users\HP\Desktop\Atom-Projects\socialMedia-functions'...
+[info] 
+[warn] !  Your requested "node" version "8" doesn't match your global version "12"
+[info] +  functions: Emulator started at http://localhost:5000
+[info] i  functions: Watching "C:\Users\HP\Desktop\Atom-Projects\socialMedia-functions\functions" for Cloud Functions...
+[debug] [2020-02-01T06:13:22.041Z] [worker-pool] addWorker(~diagnostic~)
+[debug] [2020-02-01T06:13:22.044Z] [worker-pool] Adding worker with key ~diagnostic~, total=1
+[debug] [2020-02-01T06:13:22.045Z] [worker-pool] submitWork(triggerId=)
+[debug] [2020-02-01T06:13:22.049Z] [worker-~diagnostic~-a0e079ce-7b1d-4e0a-8699-b235dc32498c]: Assigning socketPath: \\?\pipe\C:\Users\HP\Desktop\Atom-Projects\socialMedia-functions\functions\7028
+[debug] [2020-02-01T06:13:22.051Z] [worker-~diagnostic~-a0e079ce-7b1d-4e0a-8699-b235dc32498c]: BUSY
+[debug] [2020-02-01T06:13:23.505Z] [runtime-status] [7028] Functions runtime initialized. {"cwd":"C:\\Users\\HP\\Desktop\\Atom-Projects\\socialMedia-functions\\functions","node_version":"12.14.0"}
+[debug] [2020-02-01T06:13:23.509Z] [runtime-status] [7028] Disabled runtime features: {"functions_config_helper":true,"network_filtering":true,"timeout":true,"memory_limiting":true,"admin_stubs":true,"pubsub_emulator":true}
+[debug] [2020-02-01T06:13:23.515Z] [runtime-status] [7028] Resolved module firebase-admin {"declared":true,"installed":true,"version":"8.9.1","resolution":"C:\\Users\\HP\\Desktop\\Atom-Projects\\socialMedia-functions\\functions\\node_modules\\firebase-admin\\lib\\index.js"}
+[debug] [2020-02-01T06:13:23.519Z] [runtime-status] [7028] Resolved module firebase-functions {"declared":true,"installed":true,"version":"3.3.0","resolution":"C:\\Users\\HP\\Desktop\\Atom-Projects\\socialMedia-functions\\functions\\node_modules\\firebase-functions\\lib\\index.js"}
+[debug] [2020-02-01T06:13:23.521Z] [runtime-status] [7028] Resolved module firebase-functions {"declared":true,"installed":true,"version":"3.3.0","resolution":"C:\\Users\\HP\\Desktop\\Atom-Projects\\socialMedia-functions\\functions\\node_modules\\firebase-functions\\lib\\index.js"}
+[warn] !  C:\Users\HP\Desktop\Atom-Projects\socialMedia-functions\functions\index.js:13
+const serviceAccount = require('./firebaseConfig.json')
+      ^
+
+SyntaxError: Identifier 'serviceAccount' has already been declared
+    at Module._compile (internal/modules/cjs/loader.js:895:18)
+    at Object.Module._extensions..js (internal/modules/cjs/loader.js:995:10)
+    at Module.load (internal/modules/cjs/loader.js:815:32)
+    at Function.Module._load (internal/modules/cjs/loader.js:727:14)
+    at Module.require (internal/modules/cjs/loader.js:852:19)
+    at require (internal/modules/cjs/helpers.js:74:18)
+    at C:\Users\HP\AppData\Roaming\npm\node_modules\firebase-tools\lib\emulator\functionsEmulatorRuntime.js:718:33
+    at Generator.next (<anonymous>)
+    at fulfilled (C:\Users\HP\AppData\Roaming\npm\node_modules\firebase-tools\lib\emulator\functionsEmulatorRuntime.js:4:58)
+    at processTicksAndRejections (internal/process/task_queues.js:93:5)
+[warn] !  We were unable to load your functions code. (see above)
+[debug] [2020-02-01T06:13:23.711Z] [worker-~diagnostic~-a0e079ce-7b1d-4e0a-8699-b235dc32498c]: exited
+[debug] [2020-02-01T06:13:23.713Z] [worker-~diagnostic~-a0e079ce-7b1d-4e0a-8699-b235dc32498c]: FINISHED
+[debug] [2020-02-01T06:16:16.235Z] File C:\Users\HP\Desktop\Atom-Projects\socialMedia-functions\functions\index.js changed, reloading triggers
+[debug] [2020-02-01T06:16:17.107Z] File C:\Users\HP\Desktop\Atom-Projects\socialMedia-functions\functions\index.js changed, reloading triggers
+[debug] [2020-02-01T06:16:17.277Z] File C:\Users\HP\Desktop\Atom-Projects\socialMedia-functions\functions\index.js changed, reloading triggers
+[debug] [2020-02-01T06:16:17.559Z] File C:\Users\HP\Desktop\Atom-Projects\socialMedia-functions\functions\index.js changed, reloading triggers
+[debug] [2020-02-01T06:16:17.742Z] File C:\Users\HP\Desktop\Atom-Projects\socialMedia-functions\functions\index.js changed, reloading triggers
+[debug] [2020-02-01T06:16:17.959Z] File C:\Users\HP\Desktop\Atom-Projects\socialMedia-functions\functions\index.js changed, reloading triggers
+[debug] [2020-02-01T06:16:18.242Z] File C:\Users\HP\Desktop\Atom-Projects\socialMedia-functions\functions\index.js changed, reloading triggers
+[debug] [2020-02-01T06:16:18.590Z] File C:\Users\HP\Desktop\Atom-Projects\socialMedia-functions\functions\index.js changed, reloading triggers
+[debug] [2020-02-01T06:16:18.839Z] File C:\Users\HP\Desktop\Atom-Projects\socialMedia-functions\functions\index.js changed, reloading triggers
+[debug] [2020-02-01T06:16:19.856Z] [worker-pool] Cleaned up workers for ~diagnostic~: 1 --> 0
+[debug] [2020-02-01T06:16:19.881Z] [worker-pool] addWorker(~diagnostic~)
+[debug] [2020-02-01T06:16:19.882Z] [worker-pool] Adding worker with key ~diagnostic~, total=1
+[debug] [2020-02-01T06:16:19.883Z] [worker-pool] submitWork(triggerId=)
+[debug] [2020-02-01T06:16:19.884Z] [worker-~diagnostic~-4a3611dd-8212-4ddf-b530-8b77f628b6c1]: Assigning socketPath: \\?\pipe\C:\Users\HP\Desktop\Atom-Projects\socialMedia-functions\functions\5692
+[debug] [2020-02-01T06:16:19.884Z] [worker-~diagnostic~-4a3611dd-8212-4ddf-b530-8b77f628b6c1]: BUSY
+[debug] [2020-02-01T06:16:20.890Z] [runtime-status] [5692] Functions runtime initialized. {"cwd":"C:\\Users\\HP\\Desktop\\Atom-Projects\\socialMedia-functions\\functions","node_version":"12.14.0"}
+[debug] [2020-02-01T06:16:20.892Z] [runtime-status] [5692] Disabled runtime features: {"functions_config_helper":true,"network_filtering":true,"timeout":true,"memory_limiting":true,"admin_stubs":true,"pubsub_emulator":true}
+[debug] [2020-02-01T06:16:20.901Z] [runtime-status] [5692] Resolved module firebase-admin {"declared":true,"installed":true,"version":"8.9.1","resolution":"C:\\Users\\HP\\Desktop\\Atom-Projects\\socialMedia-functions\\functions\\node_modules\\firebase-admin\\lib\\index.js"}
+[debug] [2020-02-01T06:16:20.905Z] [runtime-status] [5692] Resolved module firebase-functions {"declared":true,"installed":true,"version":"3.3.0","resolution":"C:\\Users\\HP\\Desktop\\Atom-Projects\\socialMedia-functions\\functions\\node_modules\\firebase-functions\\lib\\index.js"}
+[debug] [2020-02-01T06:16:20.908Z] [runtime-status] [5692] Resolved module firebase-functions {"declared":true,"installed":true,"version":"3.3.0","resolution":"C:\\Users\\HP\\Desktop\\Atom-Projects\\socialMedia-functions\\functions\\node_modules\\firebase-functions\\lib\\index.js"}
+[warn] !  Error: Cannot find module 'dotenv'
+Require stack:
+- C:\Users\HP\Desktop\Atom-Projects\socialMedia-functions\functions\index.js
+- C:\Users\HP\AppData\Roaming\npm\node_modules\firebase-tools\lib\emulator\functionsEmulatorRuntime.js
+    at Function.Module._resolveFilename (internal/modules/cjs/loader.js:797:15)
+    at Function.Module._load (internal/modules/cjs/loader.js:690:27)
+    at Module.require (internal/modules/cjs/loader.js:852:19)
+    at require (internal/modules/cjs/helpers.js:74:18)
+    at Object.<anonymous> (C:\Users\HP\Desktop\Atom-Projects\socialMedia-functions\functions\index.js:4:1)
+    at Module._compile (internal/modules/cjs/loader.js:959:30)
+    at Object.Module._extensions..js (internal/modules/cjs/loader.js:995:10)
+    at Module.load (internal/modules/cjs/loader.js:815:32)
+    at Function.Module._load (internal/modules/cjs/loader.js:727:14)
+    at Module.require (internal/modules/cjs/loader.js:852:19)
+[warn] !  We were unable to load your functions code. (see above)
+[debug] [2020-02-01T06:16:22.105Z] [worker-~diagnostic~-4a3611dd-8212-4ddf-b530-8b77f628b6c1]: exited
+[debug] [2020-02-01T06:16:22.105Z] [worker-~diagnostic~-4a3611dd-8212-4ddf-b530-8b77f628b6c1]: FINISHED
+[debug] [2020-02-01T06:16:29.613Z] File C:\Users\HP\Desktop\Atom-Projects\socialMedia-functions\functions\index.js changed, reloading triggers
+[debug] [2020-02-01T06:16:30.650Z] [worker-pool] Cleaned up workers for ~diagnostic~: 1 --> 0
+[debug] [2020-02-01T06:16:30.686Z] [worker-pool] addWorker(~diagnostic~)
+[debug] [2020-02-01T06:16:30.686Z] [worker-pool] Adding worker with key ~diagnostic~, total=1
+[debug] [2020-02-01T06:16:30.687Z] [worker-pool] submitWork(triggerId=)
+[debug] [2020-02-01T06:16:30.687Z] [worker-~diagnostic~-e94f69d1-4ec4-4d34-8eb0-b5d343589dc3]: Assigning socketPath: \\?\pipe\C:\Users\HP\Desktop\Atom-Projects\socialMedia-functions\functions\1336
+[debug] [2020-02-01T06:16:30.687Z] [worker-~diagnostic~-e94f69d1-4ec4-4d34-8eb0-b5d343589dc3]: BUSY
+[debug] [2020-02-01T06:16:31.992Z] [runtime-status] [1336] Functions runtime initialized. {"cwd":"C:\\Users\\HP\\Desktop\\Atom-Projects\\socialMedia-functions\\functions","node_version":"12.14.0"}
+[debug] [2020-02-01T06:16:31.994Z] [runtime-status] [1336] Disabled runtime features: {"functions_config_helper":true,"network_filtering":true,"timeout":true,"memory_limiting":true,"admin_stubs":true,"pubsub_emulator":true}
+[debug] [2020-02-01T06:16:32.003Z] [runtime-status] [1336] Resolved module firebase-admin {"declared":true,"installed":true,"version":"8.9.1","resolution":"C:\\Users\\HP\\Desktop\\Atom-Projects\\socialMedia-functions\\functions\\node_modules\\firebase-admin\\lib\\index.js"}
+[debug] [2020-02-01T06:16:32.007Z] [runtime-status] [1336] Resolved module firebase-functions {"declared":true,"installed":true,"version":"3.3.0","resolution":"C:\\Users\\HP\\Desktop\\Atom-Projects\\socialMedia-functions\\functions\\node_modules\\firebase-functions\\lib\\index.js"}
+[debug] [2020-02-01T06:16:32.009Z] [runtime-status] [1336] Resolved module firebase-functions {"declared":true,"installed":true,"version":"3.3.0","resolution":"C:\\Users\\HP\\Desktop\\Atom-Projects\\socialMedia-functions\\functions\\node_modules\\firebase-functions\\lib\\index.js"}
+[warn] !  Error: Cannot find module 'dotenv'
+Require stack:
+- C:\Users\HP\Desktop\Atom-Projects\socialMedia-functions\functions\index.js
+- C:\Users\HP\AppData\Roaming\npm\node_modules\firebase-tools\lib\emulator\functionsEmulatorRuntime.js
+    at Function.Module._resolveFilename (internal/modules/cjs/loader.js:797:15)
+    at Function.Module._load (internal/modules/cjs/loader.js:690:27)
+    at Module.require (internal/modules/cjs/loader.js:852:19)
+    at require (internal/modules/cjs/helpers.js:74:18)
+    at Object.<anonymous> (C:\Users\HP\Desktop\Atom-Projects\socialMedia-functions\functions\index.js:4:1)
+    at Module._compile (internal/modules/cjs/loader.js:959:30)
+    at Object.Module._extensions..js (internal/modules/cjs/loader.js:995:10)
+    at Module.load (internal/modules/cjs/loader.js:815:32)
+    at Function.Module._load (internal/modules/cjs/loader.js:727:14)
+    at Module.require (internal/modules/cjs/loader.js:852:19)
+[warn] !  We were unable to load your functions code. (see above)
+[debug] [2020-02-01T06:16:32.950Z] [worker-~diagnostic~-e94f69d1-4ec4-4d34-8eb0-b5d343589dc3]: exited
+[debug] [2020-02-01T06:16:32.950Z] [worker-~diagnostic~-e94f69d1-4ec4-4d34-8eb0-b5d343589dc3]: FINISHED
+[debug] [2020-02-01T06:17:48.980Z] ----------------------------------------------------------------------
+[debug] [2020-02-01T06:17:48.984Z] Command:       C:\Program Files\nodejs\node.exe C:\Users\HP\AppData\Roaming\npm\node_modules\firebase-tools\lib\bin\firebase.js serve
+[debug] [2020-02-01T06:17:48.984Z] CLI Version:   7.12.1
+[debug] [2020-02-01T06:17:48.984Z] Platform:      win32
+[debug] [2020-02-01T06:17:48.984Z] Node Version:  v12.14.0
+[debug] [2020-02-01T06:17:48.986Z] Time:          Sat Feb 01 2020 03:17:48 GMT-0300 (GMT-03:00)
+[debug] [2020-02-01T06:17:48.986Z] ----------------------------------------------------------------------
+[debug] [2020-02-01T06:17:48.986Z] 
+[debug] [2020-02-01T06:17:48.997Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2020-02-01T06:17:48.999Z] > authorizing via signed-in user
+[debug] [2020-02-01T06:17:48.999Z] [iam] checking project social-media-d9c51 for permissions ["firebase.projects.get"]
+[debug] [2020-02-01T06:17:49.001Z] >>> HTTP REQUEST POST https://cloudresourcemanager.googleapis.com/v1/projects/social-media-d9c51:testIamPermissions  
+
+[debug] [2020-02-01T06:17:50.216Z] <<< HTTP RESPONSE 200
+[debug] [2020-02-01T06:17:50.224Z] >>> HTTP REQUEST GET https://firebase.googleapis.com/v1beta1/projects/social-media-d9c51  
+ 
+[debug] [2020-02-01T06:17:51.435Z] <<< HTTP RESPONSE 200
+[info] 
+[info] === Serving from 'C:\Users\HP\Desktop\Atom-Projects\socialMedia-functions'...
+[info] 
+[warn] !  Your requested "node" version "8" doesn't match your global version "12"
+[info] +  functions: Emulator started at http://localhost:5000
+[info] i  functions: Watching "C:\Users\HP\Desktop\Atom-Projects\socialMedia-functions\functions" for Cloud Functions...
+[debug] [2020-02-01T06:17:54.417Z] [worker-pool] addWorker(~diagnostic~)
+[debug] [2020-02-01T06:17:54.417Z] [worker-pool] Adding worker with key ~diagnostic~, total=1
+[debug] [2020-02-01T06:17:54.417Z] [worker-pool] submitWork(triggerId=)
+[debug] [2020-02-01T06:17:54.418Z] [worker-~diagnostic~-323683e7-8a29-450e-94c7-41c8bd4b744d]: Assigning socketPath: \\?\pipe\C:\Users\HP\Desktop\Atom-Projects\socialMedia-functions\functions\1652
+[debug] [2020-02-01T06:17:54.419Z] [worker-~diagnostic~-323683e7-8a29-450e-94c7-41c8bd4b744d]: BUSY
+[debug] [2020-02-01T06:17:55.909Z] [runtime-status] [1652] Functions runtime initialized. {"cwd":"C:\\Users\\HP\\Desktop\\Atom-Projects\\socialMedia-functions\\functions","node_version":"12.14.0"}
+[debug] [2020-02-01T06:17:55.916Z] [runtime-status] [1652] Disabled runtime features: {"functions_config_helper":true,"network_filtering":true,"timeout":true,"memory_limiting":true,"admin_stubs":true,"pubsub_emulator":true}
+[debug] [2020-02-01T06:17:55.935Z] [runtime-status] [1652] Resolved module firebase-admin {"declared":true,"installed":true,"version":"8.9.1","resolution":"C:\\Users\\HP\\Desktop\\Atom-Projects\\socialMedia-functions\\functions\\node_modules\\firebase-admin\\lib\\index.js"}
+[debug] [2020-02-01T06:17:55.942Z] [runtime-status] [1652] Resolved module firebase-functions {"declared":true,"installed":true,"version":"3.3.0","resolution":"C:\\Users\\HP\\Desktop\\Atom-Projects\\socialMedia-functions\\functions\\node_modules\\firebase-functions\\lib\\index.js"}
+[debug] [2020-02-01T06:17:55.951Z] [runtime-status] [1652] Resolved module firebase-functions {"declared":true,"installed":true,"version":"3.3.0","resolution":"C:\\Users\\HP\\Desktop\\Atom-Projects\\socialMedia-functions\\functions\\node_modules\\firebase-functions\\lib\\index.js"}
+[warn] !  Error: Cannot find module 'dotenv'
+Require stack:
+- C:\Users\HP\Desktop\Atom-Projects\socialMedia-functions\functions\index.js
+- C:\Users\HP\AppData\Roaming\npm\node_modules\firebase-tools\lib\emulator\functionsEmulatorRuntime.js
+    at Function.Module._resolveFilename (internal/modules/cjs/loader.js:797:15)
+    at Function.Module._load (internal/modules/cjs/loader.js:690:27)
+    at Module.require (internal/modules/cjs/loader.js:852:19)
+    at require (internal/modules/cjs/helpers.js:74:18)
+    at Object.<anonymous> (C:\Users\HP\Desktop\Atom-Projects\socialMedia-functions\functions\index.js:4:1)
+    at Module._compile (internal/modules/cjs/loader.js:959:30)
+    at Object.Module._extensions..js (internal/modules/cjs/loader.js:995:10)
+    at Module.load (internal/modules/cjs/loader.js:815:32)
+    at Function.Module._load (internal/modules/cjs/loader.js:727:14)
+    at Module.require (internal/modules/cjs/loader.js:852:19)
+[warn] !  We were unable to load your functions code. (see above)
+[debug] [2020-02-01T06:17:57.218Z] [worker-~diagnostic~-323683e7-8a29-450e-94c7-41c8bd4b744d]: exited
+[debug] [2020-02-01T06:17:57.218Z] [worker-~diagnostic~-323683e7-8a29-450e-94c7-41c8bd4b744d]: FINISHED
+[debug] [2020-02-01T06:18:06.620Z] File C:\Users\HP\Desktop\Atom-Projects\socialMedia-functions\functions\index.js changed, reloading triggers
+[debug] [2020-02-01T06:18:07.633Z] [worker-pool] Cleaned up workers for ~diagnostic~: 1 --> 0
+[debug] [2020-02-01T06:18:07.692Z] [worker-pool] addWorker(~diagnostic~)
+[debug] [2020-02-01T06:18:07.693Z] [worker-pool] Adding worker with key ~diagnostic~, total=1
+[debug] [2020-02-01T06:18:07.715Z] [worker-pool] submitWork(triggerId=)
+[debug] [2020-02-01T06:18:07.716Z] [worker-~diagnostic~-b8a76463-5912-468a-80a8-425b0237b3a6]: Assigning socketPath: \\?\pipe\C:\Users\HP\Desktop\Atom-Projects\socialMedia-functions\functions\8040
+[debug] [2020-02-01T06:18:07.717Z] [worker-~diagnostic~-b8a76463-5912-468a-80a8-425b0237b3a6]: BUSY
+[debug] [2020-02-01T06:18:08.834Z] [runtime-status] [8040] Functions runtime initialized. {"cwd":"C:\\Users\\HP\\Desktop\\Atom-Projects\\socialMedia-functions\\functions","node_version":"12.14.0"}
+[debug] [2020-02-01T06:18:08.836Z] [runtime-status] [8040] Disabled runtime features: {"functions_config_helper":true,"network_filtering":true,"timeout":true,"memory_limiting":true,"admin_stubs":true,"pubsub_emulator":true}
+[debug] [2020-02-01T06:18:08.845Z] [runtime-status] [8040] Resolved module firebase-admin {"declared":true,"installed":true,"version":"8.9.1","resolution":"C:\\Users\\HP\\Desktop\\Atom-Projects\\socialMedia-functions\\functions\\node_modules\\firebase-admin\\lib\\index.js"}
+[debug] [2020-02-01T06:18:08.849Z] [runtime-status] [8040] Resolved module firebase-functions {"declared":true,"installed":true,"version":"3.3.0","resolution":"C:\\Users\\HP\\Desktop\\Atom-Projects\\socialMedia-functions\\functions\\node_modules\\firebase-functions\\lib\\index.js"}
+[debug] [2020-02-01T06:18:08.851Z] [runtime-status] [8040] Resolved module firebase-functions {"declared":true,"installed":true,"version":"3.3.0","resolution":"C:\\Users\\HP\\Desktop\\Atom-Projects\\socialMedia-functions\\functions\\node_modules\\firebase-functions\\lib\\index.js"}
+[info] +  functions[api]: http function initialized (http://localhost:5000/social-media-d9c51/us-central1/api).
+[debug] [2020-02-01T06:18:11.018Z] [worker-~diagnostic~-b8a76463-5912-468a-80a8-425b0237b3a6]: IDLE
+[debug] [2020-02-01T06:18:23.840Z] [work-queue] {"queueLength":1,"workRunningCount":0}
+[debug] [2020-02-01T06:18:23.841Z] [work-queue] {"queueLength":0,"workRunningCount":1}
+[debug] [2020-02-01T06:18:23.843Z] Accepted request POST /social-media-d9c51/us-central1/api/signup --> api
+[debug] [2020-02-01T06:18:23.868Z] [worker-pool] addWorker(api)
+[debug] [2020-02-01T06:18:23.868Z] [worker-pool] Adding worker with key api, total=1
+[debug] [2020-02-01T06:18:23.869Z] [worker-pool] submitWork(triggerId=api)
+[debug] [2020-02-01T06:18:23.869Z] [worker-api-08c3931e-25e9-4f05-a135-7c9da31c9fec]: Assigning socketPath: \\?\pipe\C:\Users\HP\Desktop\Atom-Projects\socialMedia-functions\functions\7480
+[debug] [2020-02-01T06:18:23.870Z] [worker-api-08c3931e-25e9-4f05-a135-7c9da31c9fec]: BUSY
+[debug] [2020-02-01T06:18:25.087Z] [runtime-status] [7480] Functions runtime initialized. {"cwd":"C:\\Users\\HP\\Desktop\\Atom-Projects\\socialMedia-functions\\functions","node_version":"12.14.0"}
+[debug] [2020-02-01T06:18:25.089Z] [runtime-status] [7480] Disabled runtime features: {"functions_config_helper":true,"network_filtering":true,"timeout":true,"memory_limiting":true,"admin_stubs":true,"pubsub_emulator":true}
+[debug] [2020-02-01T06:18:25.095Z] [runtime-status] [7480] Resolved module firebase-admin {"declared":true,"installed":true,"version":"8.9.1","resolution":"C:\\Users\\HP\\Desktop\\Atom-Projects\\socialMedia-functions\\functions\\node_modules\\firebase-admin\\lib\\index.js"}
+[debug] [2020-02-01T06:18:25.099Z] [runtime-status] [7480] Resolved module firebase-functions {"declared":true,"installed":true,"version":"3.3.0","resolution":"C:\\Users\\HP\\Desktop\\Atom-Projects\\socialMedia-functions\\functions\\node_modules\\firebase-functions\\lib\\index.js"}
+[debug] [2020-02-01T06:18:25.100Z] [runtime-status] [7480] Resolved module firebase-functions {"declared":true,"installed":true,"version":"3.3.0","resolution":"C:\\Users\\HP\\Desktop\\Atom-Projects\\socialMedia-functions\\functions\\node_modules\\firebase-functions\\lib\\index.js"}
+[debug] [2020-02-01T06:18:27.885Z] [runtime-status] [7480] Trigger "api" has been found, beginning invocation!
+[info] i  functions: Beginning execution of "api"
+[debug] [2020-02-01T06:18:27.889Z] [runtime-status] [7480] triggerDefinition {"regions":["us-central1"],"httpsTrigger":{},"name":"api","entryPoint":"api"}
+[debug] [2020-02-01T06:18:27.890Z] [runtime-status] [7480] Running api in mode HTTPS
+[debug] [2020-02-01T06:18:27.897Z] [runtime-status] [7480] Attempting to listen to socketPath: \\?\pipe\C:\Users\HP\Desktop\Atom-Projects\socialMedia-functions\functions\7480
+[debug] [2020-02-01T06:18:27.905Z] [functions] Runtime ready! Sending request!
+[debug] [2020-02-01T06:18:27.959Z] [runtime-status] [7480] Ephemeral server handling POST request
+[debug] [2020-02-01T06:18:28.021Z] [runtime-status] [7480] Ephemeral server survived.
+[info] i  functions: Finished "api" in ~1s
+[debug] [2020-02-01T06:18:29.446Z] [worker-api-08c3931e-25e9-4f05-a135-7c9da31c9fec]: IDLE
+[debug] [2020-02-01T06:18:29.446Z] [work-queue] {"queueLength":0,"workRunningCount":0}
