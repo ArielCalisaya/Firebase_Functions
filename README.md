@@ -11,7 +11,7 @@ To execute this function you must first create a new project, and download the s
  * SDK of firebase admin.
  * Annd generate the firebase admin SDK (private config and unique per project).
 
- This file this file will be called randonid rwol139dmiwp.json (you can rename it)
+ This file this file will be called randomIdz4miwp.json (you can rename it)
 now, get the "firebase config"(private config) in the project settings
 and 
 execute the comand
