@@ -67,7 +67,9 @@ app.post('/newComment', (req, res) => {
         });
 });
 const isEmail = (email) => {
-    const regEx = ''
+    const regEx = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    if(email.match(regEx)) return true;
+    else return false;
 }
 
 const isEmpty = (string) => {
@@ -83,13 +85,21 @@ app.post('/signup', (req, res) => {
         confirmPassword: req.body.confirmPassword,
         handle: req.body.handle
     }
-    let error = {};
+    let errors = {};
     if(isEmpty(newUser.email)){
-        error.email = 'Email is Required';
-    } else if
+        errors.email = 'Email is Required';
+    } else if(!isEmail(newUser.email)){
+        errors.email = 'Must be a valid email address'
+    }
+
+    if(isEmpty(newUser.password)) errors.password = 'Pasword is Required';
+    if(newUser.password !== newUser.confirmPassword) errors.confirmPassword = 'Password not match';
+    if(isEmpty(newUser.handle)) errors.handle = 'Username is Required';
+
+    if(Object.keys(errors).length > 0) return res.status(400).json(errors);
 
     // data Validation
-    let token, userId
+    let token, userId;
 
     db.doc(`/users/${newUser.handle}`).get()
     .then(doc => {
