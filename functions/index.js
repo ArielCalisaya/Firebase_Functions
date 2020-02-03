@@ -140,6 +140,14 @@ app.post('/signup', (req, res) => {
 
 })
 
+app.post('/signin', (req, res) => {
+    const user = {
+        email: req.body.email,
+        password: req.body.password,        
+    };
+
+    let errors = {}
+})
 
 
 
