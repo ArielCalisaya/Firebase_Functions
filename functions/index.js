@@ -1,7 +1,7 @@
 const functions = require('firebase-functions');
 const firebase = require('firebase');
 const app = require('express')();
-
+const {getComments, postComment} = require('./handlers/comments');
 
 // Config to store and manipulation to data cloud
 const FIREBASE_CONFIG = require('./firebaseConfig.json')
@@ -9,24 +9,10 @@ const FIREBASE_CONFIG = require('./firebaseConfig.json')
 
 firebase.initializeApp(FIREBASE_CONFIG);
 
-app.get('/comments', (req, res) => {
-    db.collection("comments")
-        .orderBy('createdAt', 'desc')
-        .get()
-        .then((data) => {
-            let comments = [];
-            data.forEach((doc) => {
-                comments.push({
-                    commentId: doc.id,
-                    body: doc.data().body,
-                    userHandle: doc.data().userHandle,
-                    createdAt: doc.data().createdAt
-                });
-            });
-            return res.json(comments);
-        })
-        .catch((err) => console.error(err));
-});
+// comments route
+app.get('/comments', getComments);
+app.post('/newComment', FBAuth, postComment);
+
 
 const FBAuth = (req, res, next) => {
     let idToken;
@@ -57,31 +43,8 @@ const FBAuth = (req, res, next) => {
     })
 }
 
-app.post('/newComment', FBAuth, (req, res) => {
-    if(req.body.body.trim() === ''){
-        return res.status(400).json({ body: 'Body is required' });
-    }
 
-    const newComment = {
-        body: req.body.body,
-        userHandle: req.user.handle,
-        createdAt: new Date().toISOString()
-    };
 
-    db.collection("comments")
-        .add(newComment)
-        .then((doc) => {
-            res.json({
-                message: `document ${doc.id} created succesfully`
-            });
-        })
-        .catch((err) => {
-            res.status(500).json({
-                error: "something was wrong"
-            });
-            console.error(err);
-        });
-});
 const isEmail = (email) => {
     const regEx = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
     if (email.match(regEx)) return true;
