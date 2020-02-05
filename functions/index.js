@@ -1,11 +1,6 @@
 const functions = require('firebase-functions');
-const admin = require('firebase-admin');
 const firebase = require('firebase');
-
 const app = require('express')();
-
-// Priority to run firebase
-const SERVICE_ACCOUNT = require('./service_account.json')
 
 
 // Config to store and manipulation to data cloud
@@ -13,12 +8,6 @@ const FIREBASE_CONFIG = require('./firebaseConfig.json')
 
 
 firebase.initializeApp(FIREBASE_CONFIG);
-
-admin.initializeApp({
-    credential: admin.credential.cert(SERVICE_ACCOUNT)
-});
-
-const db = admin.firestore();
 
 app.get('/comments', (req, res) => {
     db.collection("comments")
