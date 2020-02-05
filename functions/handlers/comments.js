@@ -1,4 +1,4 @@
-const db = require('../utils/admin');
+const { db } = require('../utils/admin');
 
 exports.getComments = (req, res) => {
     db.collection("comments")
@@ -16,7 +16,10 @@ exports.getComments = (req, res) => {
             });
             return res.json(comments);
         })
-        .catch((err) => console.error(err));
+        .catch((err) => {
+            console.error(err)
+            res.status(500).json({ error: err.code })
+        });
 };
 
 exports.postComment = (req, res) => {

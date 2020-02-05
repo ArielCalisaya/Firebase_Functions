@@ -1,4 +1,4 @@
-const SERVICE_ACCOUNT = require('./tools/service_account.json.js');
+const SERVICE_ACCOUNT = require('./tools/service_account.json');
 const admin = require('firebase-admin');
 
 // Priority to run firebase

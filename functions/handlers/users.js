@@ -1,10 +1,11 @@
 const { db } = require('../utils/admin');
 const firebase = require('firebase');
-const FIREBASE_CONFIG = require('../tools/config/firebaseConfig.json')
+const FIREBASE_CONFIG = require('../utils/tools/firebaseConfig.json');
 
 // Config to store and manipulation to data cloud
 firebase.initializeApp(FIREBASE_CONFIG)
 
+const { validateSignupData, validateSigninData } =require('../utils/validators');
 
 exports.Signup = (req, res) => {
     newUser = {
@@ -13,18 +14,9 @@ exports.Signup = (req, res) => {
         confirmPassword: req.body.confirmPassword,
         handle: req.body.handle
     }
-    let errors = {};
-    if (isEmpty(newUser.email)) {
-        errors.email = 'Email is Required';
-    } else if (!isEmail(newUser.email)) {
-        errors.email = 'Must be a valid email address'
-    }
-
-    if (isEmpty(newUser.password)) errors.password = 'Pasword is Required';
-    if (newUser.password !== newUser.confirmPassword) errors.confirmPassword = 'Password not match';
-    if (isEmpty(newUser.handle)) errors.handle = 'Username is Required';
-
-    if (Object.keys(errors).length > 0) return res.status(400).json(errors);
+    
+    const {valid, errors} = validateSignupData(newUser);
+    if(!valid) return res.status(400).json(errors);
 
     // data Validation
     let token, userId;
@@ -73,4 +65,38 @@ exports.Signup = (req, res) => {
                 })
             }
         })
+};
+
+exports.Signin = (req, res) => {
+    const user = {
+        email: req.body.email,
+        password: req.body.password,
+    };
+    const {valid, errors} = validateSigninData(user);
+    if(!valid) return res.status(400).json(errors);
+
+    firebase.auth().signInWithEmailAndPassword(
+            user.email,
+            user.password
+        )
+        .then(data => {
+            return data.user.getIdToken();
+        })
+        .then(token => {
+            return res.json({
+                token
+            });
+        })
+        .catch(err => {
+            console.error(err);
+            if (err.code === 'auth/wrong-password') {
+                return res.status(402).json({
+                    general: 'Invalid user credentials, please try again'
+                })
+            } else {
+                return res.status(500).json({
+                    error: err.code
+                });
+            }
+        });
 };
