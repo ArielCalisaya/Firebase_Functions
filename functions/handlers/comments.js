@@ -1,4 +1,4 @@
-const db = require('../util/admin');
+const db = require('../utils/admin');
 
 exports.getComments = (req, res) => {
     db.collection("comments")
