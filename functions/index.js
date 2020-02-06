@@ -9,9 +9,9 @@ app.get('/comments', getComments);
 app.post('/newComment', FBAuth, postComment);
 
 // User Interaction
-app.post('/signup', Signup)
-app.post('/signin', Signin)
-app.post('/user/image', setImage)
+app.post('/signup', Signup);
+app.post('/signin', Signin);
+app.post('/user/image', FBAuth, setImage);
 
 
 

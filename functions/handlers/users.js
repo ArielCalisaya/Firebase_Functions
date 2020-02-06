@@ -1,6 +1,6 @@
-const { db } = require('../utils/admin');
+const { db, admin } = require('../utils/admin');
 const firebase = require('firebase');
-const FIREBASE_CONFIG = require('../utils/tools/firebaseConfig.json');
+const FIREBASE_CONFIG = require('../utils/tools/firebaseConfig');
 
 // Config to store and manipulation to data cloud
 firebase.initializeApp(FIREBASE_CONFIG)
@@ -18,6 +18,7 @@ exports.Signup = (req, res) => {
     const {valid, errors} = validateSignupData(newUser);
     if(!valid) return res.status(400).json(errors);
 
+    const defaultImage = 'default-profile.png'
     // data Validation
     let token, userId;
 
@@ -44,6 +45,7 @@ exports.Signup = (req, res) => {
                 handle: newUser.handle,
                 email: newUser.email,
                 createdAt: new Date().toISOString(),
+                imageUrl: `https://firebasestorage.googleapis.com/v0/b/${FIREBASE_CONFIG.storageBucket}/o/${defaultImage}?alt=media`,
                 userId
             };
             db.doc(`users/${newUser.handle}`).set(userCredentials)
@@ -102,5 +104,48 @@ exports.Signin = (req, res) => {
 };
 
 exports.setImage = (req, res) => {
-    
+    const BusBoy = require('busboy');
+    const path = require('path');
+    const os = require('os');
+    const fs = require('fs');
+    const busboy = new BusBoy({ headers: req.headers });
+
+    let imageFilename;
+    let imageToUpload = {};
+
+    busboy.on('file', (fieldname, file, filename, encoding, mimetype) => {
+        console.log(fieldname);
+        console.log(fieldname);
+        console.log(mimetype);
+        // Set extension .png
+        const imageExt = filename.split('.')[filename.split('.').length -1]
+        // generate random 123412.png
+        imageFilename = `${Math.round(math.random()*1999999)}.${imageExt}`
+        const filePath = path.join(os.tmpdir(), imageFilename);
+
+        imageToUpload = { filePath, mimetype };
+        file.pipe(fs.createReadStream(filePath));
+
+    });
+    busboy.on('finish', () => {
+        admin.storage().bucket().upload(imageToUpload.filePath, {
+            resumable: false,
+            metadata: {
+                metadata: {
+                    contentType: imageToUpload.mimetype
+                }
+            }
+        })
+        .then(() => {
+            const imageUrl = `https://firebasestorage.googleapis.com/v0/b/${FIREBASE_CONFIG.storageBucket}/o/${imageFilename}?alt=media`;
+            return db.doc(`users/${req.user.handle}`).update({ imageUrl });
+        })
+        .then(() => {
+            return res.json({ message: 'Image uploaded succesfully'});
+        })
+        .catch( err => {
+            console.error(err)
+            return res.status(500).json({ error: err });
+        })
+    })
 }
