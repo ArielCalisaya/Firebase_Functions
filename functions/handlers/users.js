@@ -5,7 +5,7 @@ const FIREBASE_CONFIG = require('../utils/tools/firebaseConfig.json');
 // Config to store and manipulation to data cloud
 firebase.initializeApp(FIREBASE_CONFIG)
 
-const { validateSignupData, validateSigninData } =require('../utils/validators');
+const { validateSignupData, validateSigninData } = require('../utils/validators');
 
 exports.Signup = (req, res) => {
     newUser = {
@@ -100,3 +100,7 @@ exports.Signin = (req, res) => {
             }
         });
 };
+
+exports.setImage = (req, res) => {
+    
+}

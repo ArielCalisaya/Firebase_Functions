@@ -17,7 +17,7 @@
 
     service Account
 {
-  "type": "....",
+  "type": "------",
   "project_id": "your-route-cod3",
   "private_key_id": "123456789qwertyuiop",
   "private_key": "--BEGIN PRIVATE KEY--\n--END PRIVATE KEY--\n",

@@ -30,6 +30,7 @@ exports.validateSignupData = (data) => {
 
 exports.validateSigninData = (data) => {
     let errors = {}
+    
     if (!isEmail(data.email)) {
         errors.email = 'Must be a valid email address'
     }
