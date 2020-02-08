@@ -1,3 +1,5 @@
+// example of a data base coments
+
 let db = {
   comments: [
     {
