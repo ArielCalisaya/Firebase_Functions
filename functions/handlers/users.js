@@ -121,7 +121,7 @@ exports.setImage = (req, res) => {
         // Set extension .png
         const imageExt = filename.split('.')[filename.split('.').length -1]
         // generate random_nubmber.png
-        imageFilename = `${Math.round(Math.random()*10110100)}.${imageExt}`;
+        imageFilename = `${Math.round(Math.random()*1011010011000)}.${imageExt}`;
 
         const filePath = path.join(os.tmpdir(), imageFilename);
 
