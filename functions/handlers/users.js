@@ -7,6 +7,7 @@ firebase.initializeApp(FIREBASE_CONFIG)
 
 const { validateSignupData, validateSigninData } = require('../utils/validators');
 
+// signup user nad creating credential token
 exports.Signup = (req, res) => {
     newUser = {
         email: req.body.email,
@@ -68,6 +69,7 @@ exports.Signup = (req, res) => {
         })
 };
 
+// login user with credential
 exports.Signin = (req, res) => {
     const user = {
         email: req.body.email,
@@ -102,6 +104,8 @@ exports.Signin = (req, res) => {
         });
 };
 
+
+// image upload
 exports.setImage = (req, res) => {
     const BusBoy = require('busboy');
     const path = require('path');
@@ -114,9 +118,9 @@ exports.setImage = (req, res) => {
 
     busboy.on('file', (fieldname, file, filename, encoding, mimetype) => {
         console.log(fieldname, file,filename, mimetype, encoding);
-        // if(mimetype != 'image/png' && mimetype !== 'image/jpeg'){
-        //     return res.status(400).json({ error : 'Wrong file type, only png and jpeg ext files' })
-        // }
+        if(mimetype != 'image/png' && mimetype !== 'image/jpeg'){
+            return res.status(400).json({ error : 'Wrong file type, only png and jpeg ext files' })
+        }
 
         // Set extension .png
         const imageExt = filename.split('.')[filename.split('.').length -1]
