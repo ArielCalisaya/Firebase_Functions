@@ -1,14 +1,13 @@
 // example of a data base coments
-let user = {
-  userId: "4134t0ry20120021",
+let users = {
   email: "calisayaariel62@gmail.com",
   handle: "Ariel_C",
-  createdAt: "2020-02-08T105:01:48.909Z",
   imageUrl: "https://firebasestorage.googleapis.com/v0/b/social.appspot.com/o/image.png?alt=media",
-  bio: "testing",
+  bio: "Software Developer",
   website: "http://ArielCalisaya.github.io",
-  localtion: "santiago, CL"
+  localtion: "santiago, CL",
 }
+
 
 let db = {
   comments: [
@@ -21,3 +20,27 @@ let db = {
     }
   ]
 };
+
+
+let userDetails = {
+  credentials: {
+    userId: "123891239",
+    email: "calisayaariel62@gmail.com",
+    handle: "Ariel_C",
+    createdAt: "2020-02-03T23:38:46.189Z",
+    imageUrl: "https://firebasestorage.googleapis.com/v0/b/social.appspot.com/o/image.png?alt=media",
+    bio: "Software Developer",
+    website: "http://ArielCalisaya.github.io",
+    localtion: "santiago, CL"
+  },
+  likes: [
+    {
+      userHandle: "Randy Marsh",
+      screamId: "86d9429ko0124560m"
+    },
+    {
+      userHandle: "Jhonny Lopes",
+      screamId: "d19423219ko012pw9"
+    }
+  ]
+},
