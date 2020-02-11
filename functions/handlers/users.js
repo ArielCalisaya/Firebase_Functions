@@ -5,7 +5,7 @@ const FIREBASE_CONFIG = require('../utils/tools/firebaseConfig');
 // Config to store and manipulation to data cloud
 firebase.initializeApp(FIREBASE_CONFIG)
 
-const { validateSignupData, validateSigninData } = require('../utils/validators');
+const { validateSignupData, validateSigninData, reduceUserDetails } = require('../utils/validators');
 
 // signup user nad creating credential token
 exports.Signup = (req, res) => {
@@ -104,8 +104,20 @@ exports.Signin = (req, res) => {
         });
 };
 
+exports.reqUserDetails = (req, res) => {
+    let userDetails = reduceUserDetails(req.body);
 
-// image upload
+    db.doc(`/users/${req.user.handle}`).update(userDetails)
+    .then(() => {
+        return res.json({ message: "Details added succesfully"});
+    })
+    .catch((err) => {
+        console.error(err)
+        return res.status(500).json({ error: err.code })
+    })
+};
+
+// profile image upload
 exports.setImage = (req, res) => {
     const BusBoy = require('busboy');
     const path = require('path');

@@ -1,12 +1,12 @@
 // example of a data base coments
 let user = {
   userId: "4134t0ry20120021",
-  email: "uruser@gmail.com",
-  handle: "Ur_user",
+  email: "calisayaariel62@gmail.com",
+  handle: "Ariel_C",
   createdAt: "2020-02-08T105:01:48.909Z",
-  imageUrl: "image/png",
-  bio: "here is my account",
-  website: "https://uruser.com",
+  imageUrl: "https://firebasestorage.googleapis.com/v0/b/social.appspot.com/o/image.png?alt=media",
+  bio: "testing",
+  website: "http://ArielCalisaya.github.io",
   localtion: "santiago, CL"
 }
 
