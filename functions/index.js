@@ -7,6 +7,7 @@ const {getComments, postComment} = require('./handlers/comments');
 // comments route
 app.get('/comments', getComments);
 app.post('/newComment', FBAuth, postComment);
+app.get('comment/:commentId', GET_Comments);
 
 // User Interaction
 app.post('/signup', Signup);
