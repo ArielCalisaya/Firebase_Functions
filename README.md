@@ -5,6 +5,8 @@ firebase structure for firestore api cloud
 ### this api will be used in my social media project
 #### Schema of API
 
+```json
+
 users = {
   email: "calisayaariel62@gmail.com",
   handle: "Ariel_C",
@@ -49,3 +51,4 @@ userDetails = {
   ]
   }
 }
+```
