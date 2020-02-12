@@ -104,6 +104,30 @@ exports.Signin = (req, res) => {
         });
 };
 
+// Get user with credential
+exports.GET_User = (req, res) => {
+    let userData = {}
+    db.doc(`users/${req.user.handle}`).get()
+    .then(doc => {
+        if(doc.exists){
+            userData.credentials = doc.data();
+            return db.collection('likes').where('userHandle', '==', req.user.handle).get()
+        }
+    })
+    .then(data => {
+        userData.likes = []
+        data.forEach(doc => {
+            userData.likes.push(doc.data());
+        });
+        return res.json(userData);
+    })
+    .catch(err => {
+        console.error(err)
+        return res.status(500).json({ error: err.code })
+    })
+}
+
+// Add user info =[ bio, website, location, etc]
 exports.reqUserDetails = (req, res) => {
     let userDetails = reduceUserDetails(req.body);
 
