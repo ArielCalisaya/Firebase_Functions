@@ -109,7 +109,7 @@ exports.GET_User = (req, res) => {
     let userData = {}
     db.doc(`users/${req.user.handle}`).get()
     .then(doc => {
-        if(doc.exists){
+        if(!doc.exists){
             userData.credentials = doc.data();
             return db.collection('likes').where('userHandle', '==', req.user.handle).get()
         }
@@ -124,6 +124,34 @@ exports.GET_User = (req, res) => {
     .catch(err => {
         console.error(err)
         return res.status(500).json({ error: err.code })
+    })
+}
+
+exports.GET_Comments = (req, res) => {
+    let commentData = {};
+    db.doc(`/comments/${req.params.commentId}`).get()
+    .then(doc => {
+        if(!doc.exists){
+            return res.status(404).json({error: 'Comment not found'})
+        }
+        commentData = doc.data();
+        commentData.commentId = doc.id;
+        return db
+        .collection('userInComments')
+        .orderBy('createdAt', 'desc' )
+        .where('commentId', '==', req.params.commentId)
+        .get();
+    })
+    .then(data => {
+        commentData.userInComments = [];
+        data.forEach(doc => {
+            commentData.userInComments.push(doc.data())
+        });
+        return res.json(commentData);
+    })
+    .catch(err => {
+        console.error(err);
+        res.status(500).json({ error: err.code})
     })
 }
 

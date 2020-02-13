@@ -1,13 +1,13 @@
 const app = require('express')();
 const FBAuth = require('./utils/FirebaseAuth');
 const functions = require('firebase-functions');
-const {Signup, Signin, setImage, reqUserDetails, GET_User} = require('./handlers/users');
+const {Signup, Signin, setImage, reqUserDetails, GET_User, GET_Comments} = require('./handlers/users');
 const {getComments, postComment} = require('./handlers/comments');
 
 // comments route
 app.get('/comments', getComments);
 app.post('/newComment', FBAuth, postComment);
-app.get('comment/:commentId', GET_Comments);
+app.get('/comment/:commentId', GET_Comments);
 
 // User Interaction
 app.post('/signup', Signup);
