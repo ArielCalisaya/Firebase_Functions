@@ -127,6 +127,7 @@ exports.GET_User = (req, res) => {
     })
 }
 
+// Display comment and comments of users
 exports.GET_Comments = (req, res) => {
     let commentData = {};
     db.doc(`/comments/${req.params.commentId}`).get()
