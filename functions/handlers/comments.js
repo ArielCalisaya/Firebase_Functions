@@ -113,15 +113,18 @@ exports.userInComment = (req, res) => {
 
 // like on a comment
 exports.likeComment = (req, res) => {
-    const likeDoc = db.collection('likes').where('userHandle', '==', req.user.userHandle)
+    const likeDoc = db.collection('likes')
+        .where('userHandle', '==', req.user.handle)
         .where('commentId', '==', req.params.commentId).limit(1);
 
-    const commentDoc = db.doc(`/commets/${req.params.commentId}`);
+    const commentDoc = db.doc(`/comments/${req.params.commentId}`);
 
     let commentData = {};
-    commentDoc.get()
+
+    commentDoc
+    .get()
         .then(doc => {
-            if(!doc.exists){
+            if(doc.exists){
                 commentData = doc.data();
                 commentData.commentId = doc.id;
                 return likeDoc.get();
@@ -133,7 +136,7 @@ exports.likeComment = (req, res) => {
             if(data.empty){
                 return db.collection('likes').add({
                     commentId: req.params.commentId,
-                    userHandle: req.user.userHandle
+                    userHandle: req.user.handle
                 })
                 .then(() => {
                     commentData.likeCount++
@@ -147,10 +150,47 @@ exports.likeComment = (req, res) => {
             }
         })
         .catch(err => {
+            console.error(err);
+            res.status(500).json({ error: err.code });
+        });
+};
+
+
+// unlike element
+exports.unLikeComment = (req, res) => {
+    const likeDoc = db.collection('likes')
+        .where('userHandle', '==', req.user.handle)
+        .where('commentId', '==', req.params.commentId).limit(1);
+
+    const commentDoc = db.doc(`/comments/${req.params.commentId}`);
+
+    let commentData = {};
+    commentDoc.get()
+        .then(doc => {
+            if(doc.exists){
+                commentData = doc.data();
+                commentData.commentId = doc.id;
+                return likeDoc.get();
+            } else {
+                return res.status(404).json({ error: "Comment not found" });
+            }
+        })
+        .then(data => {
+            if(data.empty){
+                return res.status(400).json({ error: "Comment not liked" });
+            } else {
+                return db.doc(`/likes/${data.docs[0].id}`).delete()
+                 .then(() => {
+                     commentData.likeCount--;
+                     return commentDoc.update({ likeCount: commentData.likeCount});
+                 })
+                  .then(() => {
+                     res.json(commentData)
+                  })
+            }
+        })
+        .catch(err => {
             console.error(err)
             res.status(500).json({ error: err.code })
         })
-}
-exports.unLikeComment = (req, res) => {
- console.log("error")
 }
