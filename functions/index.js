@@ -13,13 +13,17 @@ const {
     getAllComments,
     GET_Comment,
     POST_Comment,
-    userInComment
+    userInComment,
+    likeComment,
+    unLikeComment
 } = require('./handlers/comments');
 
 // comments route
 app.get('/comments', getAllComments);
 app.post('/newComment', FBAuth, POST_Comment);
 app.get('/comment/:commentId', GET_Comment);
+app.get('/comment/:commentId/like', FBAuth, likeComment )
+// app.get('/comment/:commentId/unLike', FBAuth, unLikeComment)
 app.post('/comment/:commentId/userInComment', FBAuth, userInComment)
 
 // User Interaction

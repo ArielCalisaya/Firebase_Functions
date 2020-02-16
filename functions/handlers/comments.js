@@ -60,15 +60,18 @@ exports.POST_Comment = (req, res) => {
     const newComment = {
         body: req.body.body,
         userHandle: req.user.handle,
-        createdAt: new Date().toISOString()
+        createdAt: new Date().toISOString(),
+        userImage: req.user.imageUrl,
+        likeCount: 0,
+        comentCount: 0
     };
 
     db.collection("comments")
         .add(newComment)
         .then((doc) => {
-            res.json({
-                message: `document ${doc.id} created succesfully`
-            });
+            const resComment = newComment;
+            resComment.commentId = doc.id;
+            res.json(resComment);
         })
         .catch((err) => {
             res.status(500).json({
@@ -106,4 +109,48 @@ exports.userInComment = (req, res) => {
             console.log(err);
             res.status(500).json({ error: `something went wrong: ${err.code}` });
         })
+}
+
+// like on a comment
+exports.likeComment = (req, res) => {
+    const likeDoc = db.collection('likes').where('userHandle', '==', req.user.userHandle)
+        .where('commentId', '==', req.params.commentId).limit(1);
+
+    const commentDoc = db.doc(`/commets/${req.params.commentId}`);
+
+    let commentData = {};
+    commentDoc.get()
+        .then(doc => {
+            if(!doc.exists){
+                commentData = doc.data();
+                commentData.commentId = doc.id;
+                return likeDoc.get();
+            } else {
+                return res.status(404).json({ error: "Comment not found" });
+            }
+        })
+        .then(data => {
+            if(data.empty){
+                return db.collection('likes').add({
+                    commentId: req.params.commentId,
+                    userHandle: req.user.userHandle
+                })
+                .then(() => {
+                    commentData.likeCount++
+                    return commentDoc.update({ likeCount: commentData.likeCount })
+                })
+                .then(() => {
+                    return res.json(commentData);
+                })
+            } else {
+                return res.status(400).json({ error: "Comment already liked" });
+            }
+        })
+        .catch(err => {
+            console.error(err)
+            res.status(500).json({ error: err.code })
+        })
+}
+exports.unLikeComment = (req, res) => {
+ console.log("error")
 }
