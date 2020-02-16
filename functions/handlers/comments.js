@@ -100,10 +100,13 @@ exports.userInComment = (req, res) => {
             if(!doc.exists){
                 return res.status(404).json({ error: "Request CommentId not found" })
             }
-            return db.collection('userInComments').add(newComment)
+            return doc.ref.update({ commentCount: doc.data().commentCount + 1 });
         })
         .then(() => {
-            res.json(newComment)    
+            return db.collection('comments').add(newComment)
+        })
+        .then(() => {
+            res.json(newComment)
         })
         .catch(err => {
             console.log(err);
