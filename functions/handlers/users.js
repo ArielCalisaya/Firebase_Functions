@@ -125,36 +125,7 @@ exports.GET_User = (req, res) => {
         console.error(err)
         return res.status(500).json({ error: err.code })
     })
-}
-
-// Display comment and comments of users
-exports.GET_Comments = (req, res) => {
-    let commentData = {};
-    db.doc(`/comments/${req.params.commentId}`).get()
-    .then(doc => {
-        if(!doc.exists){
-            return res.status(404).json({error: 'Comment not found'})
-        }
-        commentData = doc.data();
-        commentData.commentId = doc.id;
-        return db
-        .collection('userInComments')
-        .orderBy('createdAt', 'desc' )
-        .where('commentId', '==', req.params.commentId)
-        .get();
-    })
-    .then(data => {
-        commentData.userInComments = [];
-        data.forEach(doc => {
-            commentData.userInComments.push(doc.data())
-        });
-        return res.json(commentData);
-    })
-    .catch(err => {
-        console.error(err);
-        res.status(500).json({ error: err.code})
-    })
-}
+};
 
 // Add user info =[ bio, website, location, etc]
 exports.reqUserDetails = (req, res) => {
