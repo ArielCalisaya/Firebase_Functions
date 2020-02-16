@@ -23,7 +23,7 @@ comments: [
       createdAt: "2020-01-29T05:01:48.909Z",
       id: "elpl1rw2y1nm3mxnzy4",
       liedCount: 5,
-      commentCount: 3
+      commentCount: 3,
       userInComments: [
         {
           userHandle: "Ariel_C",
@@ -61,7 +61,7 @@ userDetails = {
       screamId: "86d9429ko0124560m"
     },
     {
-      userHandle: "Jhonny Lopes",
+      userHandle: "Jhonny Mcfly",
       screamId: "d19423219ko012pw9"
     }
   ]
