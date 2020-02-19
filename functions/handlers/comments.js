@@ -196,4 +196,27 @@ exports.unLikeComment = (req, res) => {
             console.error(err)
             res.status(500).json({ error: err.code })
         })
-}
+};
+
+exports.DELETE_comment = (req, res) => {
+    const doc = db.doc(`/comments/${req.params.commentId}`);
+    doc.get()
+    .then(doc => {
+        if(!doc.exists){
+            return res.status(404).json({ error: "Request CommentId not found" })
+        }
+        if(doc.data().userHandle !== req.user.handle){
+            return res.status(403).json({ error: 'Unauthorized' });
+        } else {
+            return doc.delete();
+        }
+    })
+    .then(() => {
+        res.json({ message: 'Comment deleted Successfully'});
+    })
+    .catch(err => {
+        console.error(err)
+        return res.status(500).json({ error: err.code })
+    });
+
+};
