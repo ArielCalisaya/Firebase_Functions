@@ -1,6 +1,6 @@
 # Firebase_Functions
 
-firebase structure for firestore api cloud
+firebase structure for social media project on firestore api cloud
 
 ## This api will be used in my social media project
 ### Schema of API:
