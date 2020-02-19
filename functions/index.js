@@ -8,7 +8,8 @@ const {
     setImage, 
     reqUserDetails, 
     GET_User, 
-    
+    Get_userDetails,
+    markNotificationsRead
 } = require('./handlers/users');
 const {
     getAllComments,
@@ -35,6 +36,8 @@ app.post('/signin', Signin);
 app.post('/user', FBAuth, reqUserDetails);
 app.post('/user/image', FBAuth, setImage);
 app.get('/user', FBAuth, GET_User);
+app.get('/user/:handle', Get_userDetails);
+app.post('/notifications', FBAuth, markNotificationsRead);
 
 
 exports.api = functions.region('us-central1').https.onRequest(app);
