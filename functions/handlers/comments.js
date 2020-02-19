@@ -199,8 +199,8 @@ exports.unLikeComment = (req, res) => {
 };
 
 exports.DELETE_comment = (req, res) => {
-    const doc = db.doc(`/comments/${req.params.commentId}`);
-    doc.get() 
+    const document = db.doc(`/comments/${req.params.commentId}`);
+    document.get() 
     .then(doc => {
         if(!doc.exists){
             return res.status(404).json({ error: "Request CommentId not found" })
@@ -208,7 +208,7 @@ exports.DELETE_comment = (req, res) => {
         if(doc.data().userHandle !== req.user.handle){
             return res.status(403).json({ error: 'Unauthorized' });
         } else {
-            return doc.delete();
+            return document.delete();
         }
     })
     .then(() => {
