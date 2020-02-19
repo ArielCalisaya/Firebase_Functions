@@ -23,7 +23,7 @@ const {
 app.get('/comments', getAllComments);
 app.post('/newComment', FBAuth, POST_Comment);
 app.get('/comment/:commentId', GET_Comment);
-app.delete('/comment/:commendId', FBAuth, DELETE_comment)
+app.delete('/comment/:commentId', FBAuth, DELETE_comment)
 app.get('/comment/:commentId/like', FBAuth, likeComment )
 app.get('/comment/:commentId/unLike', FBAuth, unLikeComment)
 app.post('/comment/:commentId/userInComment', FBAuth, userInComment)

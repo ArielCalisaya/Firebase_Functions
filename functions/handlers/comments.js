@@ -200,7 +200,7 @@ exports.unLikeComment = (req, res) => {
 
 exports.DELETE_comment = (req, res) => {
     const doc = db.doc(`/comments/${req.params.commentId}`);
-    doc.get()
+    doc.get() 
     .then(doc => {
         if(!doc.exists){
             return res.status(404).json({ error: "Request CommentId not found" })
@@ -214,9 +214,9 @@ exports.DELETE_comment = (req, res) => {
     .then(() => {
         res.json({ message: 'Comment deleted Successfully'});
     })
-    .catch(err => {
-        console.error(err)
-        return res.status(500).json({ error: err.code })
+    .catch((err) => {
+        console.error(err);
+        return res.status(500).json({ error: err.code });
     });
 
 };
