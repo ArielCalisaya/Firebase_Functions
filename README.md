@@ -7,7 +7,7 @@ firebase structure for social media project on firestore api cloud
 
 ```json
 
-It user = {
+user: {
   "email": "calisayaariel62@gmail.com",
   "handle": "Ariel_C",
   "imageUrl": "https://firebasestorage.googleapis.com/v0/b/social.appspot.com/o/image.png?alt=media",
@@ -16,7 +16,7 @@ It user = {
   "localtion": "santiago, CL",
 }
 
-It comments: [
+comments: [
     {
       "userHandle": "user",
       "body": "New coment",
@@ -44,7 +44,7 @@ It comments: [
 };
 
 
-It userDetails = {
+userDetails: {
   "credentials": {
         "website": "https://ArielCalisaya.github.io",
         "handle": "Ariel_C",
