@@ -11,7 +11,10 @@ exports.getAllComments = (req, res) => {
                     commentId: doc.id,
                     body: doc.data().body,
                     userHandle: doc.data().userHandle,
-                    createdAt: doc.data().createdAt
+                    createdAt: doc.data().createdAt,
+                    commentCount: doc.data().commentCount,
+                    likeCount: doc.data().likeCount,
+                    userImage: req.user.imageUrl
                 });
             });
             return res.json(comments);
@@ -84,7 +87,7 @@ exports.POST_Comment = (req, res) => {
 // Post user comment on a user post 
 exports.userInComment = (req, res) => {
     if(req.body.body.trim() === ""){
-        return res.status(400).json({ error: "comment must not be empty"})
+        return res.status(400).json({ comment: "comment must not be empty"})
     } 
     const newComment = {
         body: req.body.body,

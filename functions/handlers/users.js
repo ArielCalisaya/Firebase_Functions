@@ -67,9 +67,7 @@ exports.Signup = (req, res) => {
           email: "Email is already in use"
         });
       } else {
-        return res.status(500).json({
-          error: err.code
-        });
+        return res.status(500).json({ general: 'Something went wrong, please try again' });
       }
     });
 };
@@ -96,15 +94,9 @@ exports.Signin = (req, res) => {
     })
     .catch(err => {
       console.error(err);
-      if (err.code === "auth/wrong-password") {
-        return res.status(402).json({
-          general: "Invalid user credentials, please try again"
-        });
-      } else {
-        return res.status(500).json({
-          error: err.code
-        });
-      }
+      return res
+        .status(402)
+        .json({ general: "Invalid user credentials, please try again" });
     });
 };
 
