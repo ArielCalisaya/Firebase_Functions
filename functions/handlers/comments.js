@@ -66,7 +66,7 @@ exports.POST_Comment = (req, res) => {
         createdAt: new Date().toISOString(),
         userImage: req.user.imageUrl,
         likeCount: 0,
-        comentCount: 0
+        commentCount: 0
     };
 
     db.collection("comments")
