@@ -101,6 +101,7 @@ exports.userImageChange = functions.region('us-central1')
     .onUpdate((change) => {
         console.log(change.before.data());
         console.log(change.after.data());
+        
         if(change.before.data().imageUrl !== change.after.data().imageUrl){
             console.log('Image succesfully changed');
             const batch = db.batch();
@@ -125,7 +126,7 @@ exports.commentDelete = functions
     const commentId = context.params.commentId;
     const batch = db.batch();
     return db
-        .collection('comments')
+        .collection('userInComments')
         .where('commentId', '==', commentId)
         .get()
         .then((data) => {
