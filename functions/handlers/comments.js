@@ -14,7 +14,7 @@ exports.getAllComments = (req, res) => {
                     createdAt: doc.data().createdAt,
                     commentCount: doc.data().commentCount,
                     likeCount: doc.data().likeCount,
-                    userImage: req.user.imageUrl
+                    userImage: doc.data().userImage
                 });
             });
             return res.json(comments);
