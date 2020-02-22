@@ -1,6 +1,6 @@
 # Firebase_Functions
 
-firebase structure for social media project on firestore api cloud
+firebase structure for social media project with firestore api cloud
 
 ## This api will be used in my social media project
 ### Schema of API:
@@ -77,7 +77,7 @@ userDetails: {
             "createdAt": "2020-02-19T08:20:47.596Z",
             "commentId": "yyWlJNdwJoUI4YMYq3RJ",
             "type": "like",
-            "read": false,
+            "read": false || true,
             "notificationsId": "dtE9qh0Hz271WRm4Z8tR"
         }
     ]
