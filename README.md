@@ -40,8 +40,7 @@ comments: [
         
       ]
     }
-  ]
-};
+  ];
 
 
 userDetails: {

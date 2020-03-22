@@ -4,8 +4,8 @@ const { admin, db } = require('./admin');
 module.exports = (req, res, next) => {
     let idToken;
 
-    if(req.headers.authorization &&  req.headers.authorization.startsWith('BANSU ')){
-        idToken = req.headers.authorization.split('BANSU ')[1];
+    if(req.headers.authorization &&  req.headers.authorization.startsWith('Bearer ')){
+        idToken = req.headers.authorization.split('Bearer ')[1];
     } else {
         console.error('Not token found')
         res.status(403).json({ error: 'Not authorized' })
